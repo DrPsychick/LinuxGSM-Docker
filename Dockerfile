@@ -56,6 +56,13 @@ RUN dpkg --add-architecture i386 && \
 		libdbus-glib-1-2:i386 \
 		libnm-glib-dev:i386
 
+# cleanup
+RUN apt-get -y autoremove \
+    && apt-get -y clean \
+    && rm -rf /var/lib/apt/lists/* \
+    && rm -rf /tmp/* \
+    && rm -rf /var/tmp/*
+
 ## lgsm.sh
 RUN wget https://linuxgsm.com/dl/linuxgsm.sh
 
